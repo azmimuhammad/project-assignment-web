@@ -8,5 +8,7 @@
     "requirement-desc-2": "Pages made are endeavored to use multiple languages ​​with id / en as the language reference. Example ",
     "requirement-desc-3": "Using the provided library, for design using Material UI version 4 & HTTP clients using axios can use the provided base",
     "requirement-desc-4": "Using hooks (reducer) as state management",
-    "requirement-desc-5": "Make the display as attractive as possible / can use reference designs"
+    "requirement-desc-5": "Make the display as attractive as possible / can use reference designs",
+    "navbar-1": "Home",
+    "landing-title": "All the Pokémon data youll ever need in one place!"
 }
