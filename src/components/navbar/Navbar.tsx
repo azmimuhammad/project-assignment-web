@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Box, Typography } from "@material-ui/core";
-import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import useTranslation from "next-translate/useTranslation";
 import PokemonIcon from "@public/icons/pokemon-icon.svg";
 
@@ -13,27 +13,18 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: "24px",
         cursor: "pointer",
     },
-    msFontSize: {
-        fontSize: "32px",
-        textAlign: "left",
-        [theme.breakpoints.up(600)]: {
-            fontSize: "52px",
-        },
-    },
 }));
 
 const Navbar: FC = () => {
     const { t } = useTranslation();
     const classes = useStyles();
     const router = useRouter();
-    const { locale } = router;
 
     const navigations = [
-        { label: t("home:nav-home"), to: "/pokemon" },
-        { label: "Pokemon Type", to: "/pokemon/type" },
+        { label: t("common:nav-home"), to: "/pokemon" },
+        { label: t("common:nav-type"), to: "/pokemon/type" },
     ];
 
-    console.info({ locale: t("home:navbar-1") });
     return (
         <Box
             display="flex"

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 import {
     Grid,
@@ -29,16 +30,6 @@ interface PokemonDetailProps {
 }
 
 const useStyles = makeStyles(() => ({
-    pokeName: {
-        fontSize: "40px",
-        fontWeight: 700,
-        lineHeight: "60px",
-        color: "#42494D",
-        textAlign: "left",
-        overflow: "hidden",
-        whiteSpace: "nowrap",
-        textOverflow: "ellipsis",
-    },
     label: {
         display: "inline-block",
         fontSize: "20px",
@@ -59,6 +50,8 @@ const useStyles = makeStyles(() => ({
 
 const PokemonDetail: FC = (props: PokemonDetailProps) => {
     const { detailButton = false, data } = props;
+    const { t } = useTranslation();
+
     const router = useRouter();
     const classes = useStyles();
 
@@ -107,7 +100,7 @@ const PokemonDetail: FC = (props: PokemonDetailProps) => {
                                 variant="subtitle1"
                                 className={classes.label}
                             >
-                                Weight:&nbsp;
+                                {t("common:dialog-detail-weight")}:&nbsp;
                             </Typography>
                             <Typography
                                 variant="subtitle1"
@@ -121,7 +114,7 @@ const PokemonDetail: FC = (props: PokemonDetailProps) => {
                                 variant="subtitle1"
                                 className={classes.label}
                             >
-                                Height:&nbsp;
+                                {t("common:dialog-detail-height")}:&nbsp;
                             </Typography>
                             <Typography
                                 variant="subtitle1"
@@ -136,7 +129,7 @@ const PokemonDetail: FC = (props: PokemonDetailProps) => {
                             variant="subtitle1"
                             className={classes.label}
                         >
-                            Abilities:&nbsp;
+                            {t("common:dialog-detail-abilities")}:&nbsp;
                         </Typography>
                         <Box display={"flex"} flexDirection={"column"}>
                             {data.abilities
@@ -162,7 +155,7 @@ const PokemonDetail: FC = (props: PokemonDetailProps) => {
                             variant="subtitle1"
                             className={classes.label}
                         >
-                            Type:&nbsp;
+                            {t("common:dialog-detail-type")}:&nbsp;
                         </Typography>
                         <Box display={"flex"} style={{ gap: 10 }}>
                             {data.types
@@ -217,7 +210,7 @@ const PokemonDetail: FC = (props: PokemonDetailProps) => {
                                 }}
                                 onClick={() => router.push(`/pokemon/detail/1`)}
                             >
-                                More Detail
+                                {t("common:dialog-detail-cta")}
                             </Button>
                         </Box>
                     )}

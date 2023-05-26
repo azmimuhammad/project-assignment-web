@@ -3,9 +3,11 @@ import { Box, Select, MenuItem } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { Language } from "@material-ui/icons";
 import setLanguage from "next-translate/setLanguage";
+import useTranslation from "next-translate/useTranslation";
 
 const TopNavbar: FC = () => {
     const route = useRouter();
+    const { t } = useTranslation();
     const { locale } = route;
 
     const handleChange = async (event) => {
@@ -37,8 +39,8 @@ const TopNavbar: FC = () => {
                     fontWeight: 400,
                 }}
             >
-                <MenuItem value={`en`}>English</MenuItem>
-                <MenuItem value={`id`}>Indonesia</MenuItem>
+                <MenuItem value={`en`}>{t("common:language-en")}</MenuItem>
+                <MenuItem value={`id`}>{t("common:language-id")}</MenuItem>
             </Select>
         </Box>
     );

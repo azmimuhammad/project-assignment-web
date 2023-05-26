@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { Card, CardContent, Box, Typography, Chip } from "@material-ui/core";
 import { COLORS } from "@pages/pokemon/detail/[id]";
 
@@ -11,8 +10,6 @@ interface CardProps {
 
 const PokeCardList = (props: CardProps) => {
     const { onCardClick, item } = props;
-
-    const router = useRouter()
 
     return (
         <Card
@@ -76,14 +73,8 @@ const PokeCardList = (props: CardProps) => {
                             COLORS[Math.floor(Math.random() * COLORS.length)];
 
                         return (
-                            // <Link
-                            //     href={{
-                            //         pathname: "/pokemon/type",
-                            //         query: { name: t.type.name },
-                            //     }}
-                            //     key={i}
-                            // >
                             <Chip
+                                key={i}
                                 label={t.type.name}
                                 style={{
                                     backgroundColor: getColor,
@@ -92,7 +83,6 @@ const PokeCardList = (props: CardProps) => {
                                     textTransform: "capitalize",
                                 }}
                             />
-                            // </Link>
                         );
                     })}
                 </Box>

@@ -207,7 +207,7 @@ const DetailPokemon: FC = () => {
                             }}
                         >
                             <Typography className={classes.label}>
-                                Pokemon Type
+                                {t("common:type-poketype")}
                             </Typography>
                             {!loading.list
                                 ? types.map((val) => {
@@ -263,7 +263,7 @@ const DetailPokemon: FC = () => {
                             variant="h4"
                             style={{ fontWeight: 700, color: "#42494D" }}
                         >
-                            Pokemon with Type{" "}
+                            {t("common:type-poke-with-type")}{" "}
                             <span style={{ textTransform: "capitalize" }}>
                                 {currentType}
                             </span>

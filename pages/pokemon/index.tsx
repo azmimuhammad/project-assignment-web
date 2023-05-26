@@ -176,8 +176,7 @@ const PokemonList: FC = () => {
                                 component="h3"
                                 className={classes.msFontSize}
                             >
-                                All the Pokémon data youll ever need in one
-                                place!
+                                {t("common:landing-title")}
                             </Typography>
                             <Typography
                                 align="center"
@@ -192,7 +191,7 @@ const PokemonList: FC = () => {
                                     marginTop: "32px",
                                 }}
                             >
-                                Thousands of data compiled into one place
+                                {t("common:landing-subtitle")}
                             </Typography>
                             <Box component="div" textAlign={"left"} mt={4}>
                                 <Button
@@ -211,7 +210,7 @@ const PokemonList: FC = () => {
                                     }}
                                     onClick={goToPokeList}
                                 >
-                                    Check PokèDex
+                                    {t("common:landing-cta")}
                                 </Button>
                             </Box>
                         </Box>
@@ -249,19 +248,8 @@ const PokemonList: FC = () => {
                 >
                     PokèDex
                 </Typography>
-                <Typography
-                    variant="h2"
-                    className={classes.contentSubtitle}
-                    // style={{
-                    //     fontSize: "24px",
-                    //     fontWeight: "300",
-                    //     lineHeight: "36px",
-                    //     color: "#42494D",
-                    //     textAlign: "center",
-                    //     marginBottom: "16px",
-                    // }}
-                >
-                    All Generation Totaling
+                <Typography variant="h2" className={classes.contentSubtitle}>
+                    {t("common:pokedex-subtitle")}
                 </Typography>
                 <Typography
                     variant="h2"
@@ -274,7 +262,7 @@ const PokemonList: FC = () => {
                         marginBottom: "70px",
                     }}
                 >
-                    1000 Pokemon
+                    {pagination.count} Pokemon
                 </Typography>
                 <Grid container spacing={10}>
                     {pokeList.map((poke) => {
@@ -368,7 +356,7 @@ const PokemonList: FC = () => {
 
             <DetailPokeDialog
                 data={dialogDetail.data}
-                open={dialogDetail.open && dialogDetail.data}
+                open={dialogDetail.open}
                 onClose={() => setDialogDetail({ open: false, data: null })}
             />
         </Container>

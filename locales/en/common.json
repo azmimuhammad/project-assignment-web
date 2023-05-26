@@ -1,4 +1,20 @@
 {
     "language-id": "Bahasa Indonesia",
-    "language-en": "English"
+    "language-en": "English",
+    "nav-home": "Home",
+    "nav-type": "Pokemon Type",
+    "landing-title": "All the Pokémon data youll ever need in one place!",
+    "landing-subtitle": "Thousands of data compiled into one place",
+    "landing-cta": "Check PokèDex",
+    "pokedex-subtitle": "All Generation Totaling",
+    "dialog-detail-weight": "Weight",
+    "dialog-detail-height": "Height",
+    "dialog-detail-abilities": "Abilities",
+    "dialog-detail-type": "Type",
+    "dialog-detail-cta": "More Detail",
+    "poke-detail-other-images": "Other Images",
+    "poke-detail-stats": "Stats",
+    "poke-detail-evolution": "Evolution",
+    "type-poketype": "Pokemon Type",
+    "type-poke-with-type": "Pokemon with Type"
 }

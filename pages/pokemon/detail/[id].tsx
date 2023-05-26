@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 
-import api from "@utils/api";
 import { BASE_API_URL } from "@constants/config";
 
 import TopNavbar from "@components/navbar/TopNavbar";
@@ -76,28 +75,19 @@ const DetailPokemon: FC = () => {
     const { id } = router.query;
 
     const [pokemon, setPokemon] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
     const [evolutions, setEvolutions] = useState([]);
 
     useEffect(() => {
         getDetail();
         getEvo();
-    }, []);
-
-    // useEffect(() => {
-
-    //     if (evolutions.length === 0) getEvo();
-    // }, [evolutions]);
+    }, [id]);
 
     const getDetail = async () => {
-        setIsLoading(true);
         await Axios.get(`${BASE_API_URL}/pokemon/${id}`)
             .then((res) => {
-                console.log("detail", res.data);
                 setPokemon(res.data);
             })
-            .catch((err) => console.error(err))
-            .finally(() => setIsLoading(false));
+            .catch((err) => console.error(err));
     };
 
     const getSpecies = async (url) => {
@@ -108,28 +98,18 @@ const DetailPokemon: FC = () => {
         );
         const { data } = species;
 
-        // return { image: data.sprites.front_default };
         return data;
     };
 
-    // console.info(getSpecies("https://pokeapi.co/api/v2/pokemon-species/1/"));
-
     const getEvo = async () => {
         const evo = [];
-        const hasNext = false;
-        const nextEvo = "";
 
         const _evolution = await Axios.get(
             `${BASE_API_URL}/evolution-chain/${id}`,
         );
         const _evo = _evolution.data;
-        console.info({ _evo });
         const species = await getSpecies(_evo.chain.species.url);
-        // const species = await Axios.get(
-        //     `${BASE_API_URL}/pokemon/${parseInt(
-        //         _evo.chain.species.url.split("/")[6],
-        //     )}`,
-        // );
+
         evo.push({
             ..._evo.chain.species,
             images: species.sprites.front_default,
@@ -152,21 +132,17 @@ const DetailPokemon: FC = () => {
         });
 
         const evoData = [];
-        Promise.all(evo.map((ev) => getSpecies(ev.url))).then(
-            (res) => {
-                console.log("res", res);
-                setEvolutions([...res]);
-            },
-        );
+        Promise.all(evo.map((ev) => getSpecies(ev.url))).then((res) => {
+            setEvolutions([...res]);
+        });
 
         setEvolutions([...evoData]);
     };
-    
+
     return (
         <Container maxWidth="xl" className="p-0">
             <TopNavbar />
             <Navbar />
-            ``
             <Box
                 component="div"
                 display={"flex"}
@@ -200,7 +176,7 @@ const DetailPokemon: FC = () => {
                         style={{ gap: 30 }}
                     >
                         <Typography className={classes.label}>
-                            Other Images:
+                            {t("common:poke-detail-other-images")}:
                         </Typography>
                         <Box
                             display={"flex"}
@@ -245,7 +221,7 @@ const DetailPokemon: FC = () => {
                         style={{ gap: 30 }}
                     >
                         <Typography className={classes.label}>
-                            Stats:
+                            {t("common:poke-detail-stats")}:
                         </Typography>
                         <Grid container spacing={2}>
                             {pokemon?.stats?.map((stat, idx) => {
@@ -292,7 +268,7 @@ const DetailPokemon: FC = () => {
                     style={{ gap: 30 }}
                 >
                     <Typography className={classes.label}>
-                        Evolution:
+                        {t("common:poke-detail-evolution")}:
                     </Typography>
                     <Box display={"flex"} style={{ gap: 10 }} flexWrap={"wrap"}>
                         {evolutions.map((evo, idx) => {
@@ -300,9 +276,6 @@ const DetailPokemon: FC = () => {
                                 COLORS[
                                     Math.floor(Math.random() * COLORS.length)
                                 ];
-
-                            // const species = await getSpecies(evo.url);
-                            // console.info({ species });
 
                             return (
                                 <>
@@ -331,9 +304,20 @@ const DetailPokemon: FC = () => {
                                             style={{
                                                 border: `10px solid ${getColor}`,
                                                 width: "195px",
+                                                padding: "10px",
+                                                cursor: "pointer",
                                             }}
+                                            onClick={() =>
+                                                router.push(
+                                                    `/pokemon/detail/${evo.id}`,
+                                                )
+                                            }
                                         >
-                                            {/* {species.image} */}
+                                            <img
+                                                src={evo.sprites.front_default}
+                                                alt=""
+                                                style={{ width: "100%" }}
+                                            />
                                         </Box>
                                         <Typography
                                             className={classes.label}

@@ -1,4 +1,20 @@
 {
     "language-id": "Bahasa Indonesia",
-    "language-en": "English"
+    "language-en": "English",
+    "nav-home": "Beranda",
+    "nav-type": "Jenis Pokemon",
+    "landing-title": "Semua data Pokemon yang Anda perlukan di satu tempat!",
+    "landing-subtitle": "Ribuan data dikompilasi ke dalam satu tempat",
+    "landing-cta": "Cek PokèDex",
+    "pokedex-subtitle": "Total Semua Generasi",
+    "dialog-detail-weight": "Berat",
+    "dialog-detail-height": "Tinggi",
+    "dialog-detail-abilities": "Kemampuan",
+    "dialog-detail-type": "Tipe",
+    "dialog-detail-cta": "Lebih Detail",
+    "poke-detail-other-images": "Gambar Lainnya",
+    "poke-detail-stats": "Statistik",
+    "poke-detail-evolution": "Evolusi",
+    "type-poketype": "Jenis Pokemon",
+    "type-poke-with-type": "Pokemon dengan Jenis"
 }
